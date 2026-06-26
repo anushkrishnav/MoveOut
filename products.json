@@ -5,7 +5,7 @@
     "description": "Plastic weave medium home organizer.",
     "category": "Storage",
     "color": "Brown",
-    "condition": "Used like new",
+    "condition": "Excellent",
     "notes": "No scratches or stickers.",
     "originalPrice": null,
     "askingPrice": 15,
@@ -102,6 +102,19 @@
     "askingPrice": 70,
     "status": "available",
     "imageCount": 1
+  },
+  {
+    "id": "010",
+    "title": "Lwenki Key & Mail Holder for Wall",
+    "description": "Rustic natural Paulownia wood wall-mounted organizer with mail slots and 6 metal hooks for keys.",
+    "category": "Storage",
+    "color": "Dark Walnut / Black hooks",
+    "condition": "Excellent",
+    "notes": "",
+    "originalPrice": 24,
+    "askingPrice": 15,
+    "status": "available",
+    "imageCount": 2
   },
   {
     "id": "008",
