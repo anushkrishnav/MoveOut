@@ -50,6 +50,18 @@ async function init() {
   }
   buildFilters();
   render();
+  trackVisit();
+}
+
+/* ─── Visit counter ───────────────────────────────────────── */
+function trackVisit() {
+  fetch('https://api.counterapi.dev/v1/anushkrishnav-moveout/visits/hit')
+    .then(r => r.json())
+    .then(d => {
+      const el = document.getElementById('visitCount');
+      if (el && d.count != null) el.textContent = d.count.toLocaleString();
+    })
+    .catch(() => {});
 }
 
 /* ─── Filters ─────────────────────────────────────────────── */
@@ -137,7 +149,8 @@ function createCard(p) {
   const notesHTML = p.notes ? `<div class="card-notes">${escHtml(p.notes)}</div>` : '';
 
   /* --- WhatsApp message --- */
-  const waMsg = encodeURIComponent(`Hi, I'm interested in item ${p.id} - ${p.title}. Is it still available?`);
+  const waMsg = encodeURIComponent(`Hi! I saw your Moving Out Sale listing for the *${p.title}* — is it still available? (Park Point pickup)`);
+
 
   card.innerHTML = `
     <div class="card-badge"># ${p.id}</div>
