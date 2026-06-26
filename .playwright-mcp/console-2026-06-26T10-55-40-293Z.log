@@ -1,4 +1,0 @@
-[     414ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.whatsapp.com/data/manifest.json:0
-[     419ms] [ERROR] Manifest fetch from https://api.whatsapp.com/data/manifest.json failed, code 404 @ https://api.whatsapp.com/send/?phone=15859811189&text=Hi%2C+I%27m+interested+in+item+002+-+Modern+Gold+Bar+Cart+with+Wooden+Shelves.+Is+it+still+available%3F&type=phone_number&app_absent=0:0
-[    1231ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.whatsapp.com/data/manifest.json:0
-[    1260ms] [ERROR] Manifest fetch from https://api.whatsapp.com/data/manifest.json failed, code 404 @ https://api.whatsapp.com/send/?phone=15859811189&text=Hi%2C+I%27m+interested+in+item+002+-+Modern+Gold+Bar+Cart+with+Wooden+Shelves.+Is+it+still+available%3F&type=phone_number&app_absent=0:0

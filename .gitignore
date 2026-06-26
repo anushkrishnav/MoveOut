@@ -1,0 +1,19 @@
+# Raw source photos (renamed copies live in products/)
+product/
+
+# Playwright test artifacts
+.playwright-mcp/
+
+# Local database
+*.db
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if ever used)
+node_modules/

@@ -190,35 +190,210 @@ async function exportPDF() {
   btn.innerHTML = `${spinnerIcon} Generating…`;
   btn.disabled = true;
 
-  /* Dynamically load jsPDF + html2canvas if not present */
   await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-  await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
 
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true });
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
-  const margin = 14;
-  const col = (pageW - margin * 2 - 8) / 2;
-  let x = margin, y = margin;
 
-  /* Header */
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(22);
-  doc.setTextColor(26, 26, 26);
-  doc.text('Moving Out Sale', pageW / 2, y + 8, { align: 'center' });
-  y += 12;
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-  doc.setTextColor(100);
-  doc.text(`Pickup only at ${LOCATION}  •  Call or WhatsApp: ${PHONE}`, pageW / 2, y + 4, { align: 'center' });
-  y += 12;
-  doc.setDrawColor(201, 168, 76);
-  doc.setLineWidth(0.5);
-  doc.line(margin, y, pageW - margin, y);
-  y += 8;
+  /* ── Dimensions ── */
+  const PW = doc.internal.pageSize.getWidth();   // 210
+  const PH = doc.internal.pageSize.getHeight();  // 297
+  const M  = 13;                                 // margin
+  const GAP = 5;                                 // gap between columns
+  const COL = (PW - M * 2 - GAP) / 2;           // ~89.5mm per column
+  const CARD_H  = 78;                            // product card height
+  const HDR_H   = 38;                            // page header height
+  const FTR_H   = 10;                            // footer height
+  const IMG_W   = 44;                            // image width inside card
+  const IMG_H   = 40;                            // image height inside card
 
-  /* Products */
+  /* ── Colour palette ── */
+  const C = {
+    dark:      [26,  26,  26 ],
+    gold:      [201, 168, 76 ],
+    goldLight: [232, 213, 163],
+    brown:     [107, 76,  42 ],
+    gray:      [110, 110, 110],
+    lightGray: [200, 200, 200],
+    cream:     [250, 248, 244],
+    white:     [255, 255, 255],
+    red:       [192, 57,  43 ],
+  };
+
+  const fill  = (c) => doc.setFillColor(...c);
+  const draw  = (c) => doc.setDrawColor(...c);
+  const color = (c) => doc.setTextColor(...c);
+  const lw    = (n) => doc.setLineWidth(n);
+
+  /* ── Page header ── */
+  function pageHeader(label) {
+    // Dark top band
+    fill(C.dark); doc.rect(0, 0, PW, 7, 'F');
+    // Gold accent line
+    fill(C.gold);  doc.rect(0, 7, PW, 1.2, 'F');
+
+    // Title
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(20);
+    color(C.dark);
+    doc.text('Moving Out Sale', PW / 2, 19, { align: 'center' });
+
+    // Sub
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
+    color(C.gray);
+    doc.text(
+      `Pickup only · ${LOCATION}  ·  Call or WhatsApp: ${PHONE}  ·  All items sold as-is · No refunds · No returns`,
+      PW / 2, 25, { align: 'center' }
+    );
+
+    // Gold divider with label
+    draw(C.goldLight); lw(0.4);
+    doc.line(M, 31, PW - M, 31);
+
+    if (label) {
+      fill(C.dark); doc.roundedRect(PW / 2 - 22, 27.5, 44, 7, 2, 2, 'F');
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5);
+      color(C.gold);
+      doc.text(label, PW / 2, 32.5, { align: 'center' });
+    } else {
+      fill(C.gold); doc.circle(PW / 2, 31, 1, 'F');
+    }
+  }
+
+  /* ── Page footer ── */
+  function pageFooter(num, total) {
+    const fy = PH - 8;
+    draw(C.goldLight); lw(0.3);
+    doc.line(M, fy, PW - M, fy);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+    color(C.gray);
+    doc.text('All items sold as-is. No refunds. No returns. Pickup only at Park Point.', M, fy + 4);
+    doc.text(`${num} / ${total}`, PW - M, fy + 4, { align: 'right' });
+  }
+
+  /* ── Product card ── */
+  async function productCard(p, cx, cy) {
+    // Drop shadow
+    fill([215, 210, 200]); doc.roundedRect(cx + 1.2, cy + 1.2, COL, CARD_H, 3, 3, 'F');
+
+    // Card background
+    fill(C.white); draw(C.goldLight); lw(0.35);
+    doc.roundedRect(cx, cy, COL, CARD_H, 3, 3, 'FD');
+
+    // Gold left accent bar
+    fill(C.gold); doc.roundedRect(cx, cy, 3, CARD_H, 1.5, 0, 'F');
+
+    // Image background
+    fill(C.cream); doc.rect(cx + 3, cy, IMG_W, CARD_H, 'F');
+
+    // Product image
+    if (p.imageCount > 0) {
+      try {
+        const imgD = await toBase64(`products/${p.id}_1.jpg`);
+        const iy = cy + (CARD_H - IMG_H) / 2;
+        doc.addImage(imgD, 'JPEG', cx + 3, iy, IMG_W, IMG_H, undefined, 'FAST');
+      } catch (_) {}
+    }
+
+    // Vertical separator
+    draw(C.goldLight); lw(0.3);
+    doc.line(cx + 3 + IMG_W, cy + 4, cx + 3 + IMG_W, cy + CARD_H - 4);
+
+    // Text zone
+    const tx = cx + IMG_W + 7;
+    const tw = COL - IMG_W - 10;
+    let ty = cy + 10;
+
+    // Title
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5);
+    color(C.dark);
+    const tLines = doc.splitTextToSize(p.title, tw);
+    doc.text(tLines.slice(0, 2), tx, ty);
+    ty += tLines.slice(0, 2).length * 5 + 2;
+
+    // Category · Color · Condition
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7);
+    color(C.brown);
+    doc.text(`${p.category}  ·  ${p.color}  ·  ${p.condition}`, tx, ty);
+    ty += 4.5;
+
+    // Thin divider
+    draw(C.goldLight); lw(0.25); doc.line(tx, ty, tx + tw, ty); ty += 3.5;
+
+    // Notes
+    if (p.notes) {
+      doc.setFont('helvetica', 'italic'); doc.setFontSize(7);
+      color(C.gray);
+      const nLines = doc.splitTextToSize(p.notes, tw);
+      doc.text(nLines.slice(0, 2), tx, ty);
+      ty += nLines.slice(0, 2).length * 3.8 + 2.5;
+    }
+
+    // Original price (struck through)
+    if (p.originalPrice) {
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5);
+      color(C.lightGray);
+      const wasText = `Was $${p.originalPrice}`;
+      doc.text(wasText, tx, ty);
+      const ww = doc.getTextWidth(wasText);
+      draw(C.lightGray); lw(0.3); doc.line(tx, ty - 1, tx + ww, ty - 1);
+      ty += 5;
+    }
+
+    // Asking price
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(20);
+    color(C.dark);
+    doc.text(`$${p.askingPrice}`, tx, ty + 7);
+
+    // ID badge bottom-left inside image area
+    const badgeY = cy + CARD_H - 9;
+    fill(C.dark); doc.roundedRect(cx + 4, badgeY, 24, 7.5, 1.5, 1.5, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5);
+    color(C.gold);
+    doc.text(`# ${p.id}`, cx + 6, badgeY + 5.2);
+
+    // As-is label bottom-right
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6);
+    color(C.lightGray);
+    doc.text('As-is · No returns', cx + COL - 2, cy + CARD_H - 2, { align: 'right' });
+
+    // SOLD overlay
+    if (p.status === 'sold') {
+      fill([255, 255, 255]); doc.setGState(doc.GState({ opacity: 0.75 }));
+      doc.roundedRect(cx, cy, COL, CARD_H, 3, 3, 'F');
+      doc.setGState(doc.GState({ opacity: 1 }));
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(22);
+      color(C.red);
+      doc.text('SOLD', cx + COL / 2, cy + CARD_H / 2 + 4, { align: 'center' });
+    }
+  }
+
+  /* ── Appendix image block (2×2 grid) ── */
+  async function appendixBlock(item, ax, ay, bw, bh) {
+    // Frame
+    fill(C.cream); draw(C.goldLight); lw(0.35);
+    doc.roundedRect(ax, ay, bw, bh + 13, 2, 2, 'FD');
+
+    // Image
+    if (item) {
+      try {
+        const imgD = await toBase64(item.src);
+        doc.addImage(imgD, 'JPEG', ax + 1, ay + 1, bw - 2, bh - 2, undefined, 'FAST');
+      } catch (_) {}
+
+      // Label band
+      fill(C.dark); doc.rect(ax, ay + bh - 1, bw, 14, 'F');
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5);
+      color(C.gold);
+      doc.text(doc.splitTextToSize(item.title, bw - 4)[0], ax + 3, ay + bh + 5.5);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+      color([180, 180, 180]);
+      doc.text(item.sub, ax + 3, ay + bh + 10.5);
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     MAIN CATALOG
+  ══════════════════════════════════════════════════════════ */
   const q = searchQuery.toLowerCase();
   const visible = allProducts.filter(p => {
     const matchCat = activeFilter === 'All' || p.category === activeFilter;
@@ -227,87 +402,71 @@ async function exportPDF() {
     return matchCat && matchQ;
   });
 
-  let col2 = false;
+  const CARD_GAP  = 5;
+  const CONTENT_Y = HDR_H + 2;
+  const CONTENT_H = PH - HDR_H - FTR_H;
+
+  let pageNum = 1;
+  pageHeader(null);
+
+  let rowY = CONTENT_Y;
+  let colIdx = 0; // 0 = left, 1 = right
 
   for (const p of visible) {
-    const cardH = 66;
-    if (y + cardH > pageH - margin) {
-      doc.addPage();
-      y = margin;
-      col2 = false;
-      x = margin;
-    }
-    const cx = col2 ? margin + col + 8 : margin;
-
-    /* Card border */
-    doc.setDrawColor(232, 213, 163);
-    doc.setFillColor(255, 255, 255);
-    doc.roundedRect(cx, y, col, cardH, 3, 3, 'FD');
-
-    /* Try to embed image */
-    const imgSrc = `products/${p.id}_1.jpg`;
-    try {
-      const imgData = await toBase64(imgSrc);
-      doc.addImage(imgData, 'JPEG', cx + 2, y + 2, 34, 28, undefined, 'FAST');
-    } catch (_) { /* skip if no image */ }
-
-    const tx = cx + 38;
-    const tw = col - 40;
-
-    /* ID badge */
-    doc.setFillColor(26, 26, 26);
-    doc.roundedRect(cx + 2, y + 32, 18, 6, 1, 1, 'F');
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7);
-    doc.setTextColor(201, 168, 76);
-    doc.text(`# ${p.id}`, cx + 3.5, y + 36.5);
-
-    /* Title */
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.setTextColor(26, 26, 26);
-    const titleLines = doc.splitTextToSize(p.title, tw);
-    doc.text(titleLines.slice(0, 2), tx, y + 8);
-
-    /* Meta */
-    let my = y + 8 + titleLines.slice(0, 2).length * 4 + 2;
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7.5);
-    doc.setTextColor(107, 76, 42);
-    doc.text(`${p.category}  •  ${p.color}  •  ${p.condition}`, tx, my);
-    my += 5;
-
-    /* Notes */
-    if (p.notes) {
-      doc.setFontSize(7);
-      doc.setTextColor(100);
-      const noteLines = doc.splitTextToSize(p.notes, tw);
-      doc.text(noteLines.slice(0, 2), tx, my);
-      my += noteLines.slice(0, 2).length * 3.5 + 2;
+    if (rowY + CARD_H > PH - FTR_H) {
+      doc.addPage(); pageNum++;
+      pageHeader(null);
+      rowY = CONTENT_Y; colIdx = 0;
     }
 
-    /* Price */
-    if (p.originalPrice) {
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7);
-      doc.setTextColor(150);
-      doc.text(`Was $${p.originalPrice}`, tx, my);
-      my += 4;
-    }
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(13);
-    doc.setTextColor(26, 26, 26);
-    doc.text(`$${p.askingPrice}`, tx, my + 3);
+    const cx = colIdx === 0 ? M : M + COL + GAP;
+    await productCard(p, cx, rowY);
 
-    if (p.status === 'sold') {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(16);
-      doc.setTextColor(192, 57, 43);
-      doc.text('SOLD', cx + col / 2, y + cardH / 2 + 4, { align: 'center' });
-    }
+    if (colIdx === 1) { rowY += CARD_H + CARD_GAP; colIdx = 0; }
+    else              { colIdx = 1; }
+  }
 
-    if (col2) { y += cardH + 5; col2 = false; x = margin; }
-    else       { col2 = true; }
+  /* ══════════════════════════════════════════════════════════
+     APPENDIX — all photos, 4 per page (2×2)
+  ══════════════════════════════════════════════════════════ */
+  const appendixItems = [];
+  for (const p of allProducts) {
+    for (let i = 1; i <= p.imageCount; i++) {
+      appendixItems.push({
+        src:   `products/${p.id}_${i}.jpg`,
+        title: `#${p.id}  ${p.title}`,
+        sub:   `Photo ${i} of ${p.imageCount}`,
+      });
+    }
+  }
+
+  if (appendixItems.length > 0) {
+    const BW = (PW - M * 2 - GAP) / 2;       // block width  ~89.5mm
+    const BH = Math.round(BW * 0.72);         // block image height ~64mm
+    const BLOCK_FULL = BH + 14;               // image + label band
+    const ROW_GAP    = 5;
+
+    for (let ai = 0; ai < appendixItems.length; ai += 4) {
+      doc.addPage(); pageNum++;
+      const isFirst = ai === 0;
+      pageHeader('Photo Appendix — All Product Images');
+
+      // Row 1
+      await appendixBlock(appendixItems[ai],     M,           CONTENT_Y,       BW, BH);
+      await appendixBlock(appendixItems[ai + 1], M + BW + GAP, CONTENT_Y,     BW, BH);
+
+      // Row 2
+      const row2Y = CONTENT_Y + BLOCK_FULL + ROW_GAP;
+      await appendixBlock(appendixItems[ai + 2], M,             row2Y,         BW, BH);
+      await appendixBlock(appendixItems[ai + 3], M + BW + GAP,  row2Y,        BW, BH);
+    }
+  }
+
+  /* ── Add footer + page numbers to every page ── */
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    pageFooter(i, totalPages);
   }
 
   doc.save('moving-out-sale-catalog.pdf');
