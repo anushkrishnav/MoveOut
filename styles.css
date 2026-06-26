@@ -308,24 +308,27 @@ main {
 /* ID badge */
 .card-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(0,0,0,.6);
+  top: 10px;
+  left: 10px;
+  background: rgba(26,26,26,.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   color: var(--gold-light);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  padding: 3px 9px;
-  border-radius: 999px;
-  letter-spacing: .05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: .08em;
   z-index: 2;
+  text-transform: uppercase;
 }
 
 /* Carousel — padding-top trick gives a reliable 4:3 box in any flex context */
 .carousel {
   position: relative;
   width: 100%;
-  padding-top: 75%; /* 3/4 = 75% → 4:3 ratio */
-  background: var(--cream);
+  padding-top: 82%;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -341,6 +344,7 @@ main {
   flex: 0 0 100%;
   position: relative;
   overflow: hidden;
+  background: #fff;
 }
 
 .carousel-slide img {
@@ -348,8 +352,10 @@ main {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
   display: block;
+  padding: 6px;
 }
 
 /* Placeholder when image is missing or not yet uploaded */
@@ -439,26 +445,34 @@ main {
 .condition-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1.5px solid transparent;
+  font-weight: 500;
+  letter-spacing: .01em;
+  padding: 3px 9px 3px 7px;
+  border-radius: 5px;
+  border: 1px solid transparent;
 }
 .condition-badge::before {
-  content: '●';
-  font-size: 7px;
-  line-height: 1;
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
-.cond-new       { background: #e8f9ef; color: #1a7f4b; border-color: #9edfbb; }
-.cond-excellent { background: #e6f4ff; color: #1565c0; border-color: #90caf9; }
-.cond-like-new  { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
-.cond-good      { background: #fff8e1; color: #b45309; border-color: #fcd34d; }
-.cond-used      { background: #fff3e0; color: #c2410c; border-color: #fdba74; }
-.cond-worn      { background: #fff1f2; color: #b91c1c; border-color: #fca5a5; }
+.cond-new       { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+.cond-new::before       { background: #16a34a; }
+.cond-excellent { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.cond-excellent::before { background: #3b82f6; }
+.cond-like-new  { background: #f0fdfa; color: #0f766e; border-color: #99f6e4; }
+.cond-like-new::before  { background: #14b8a6; }
+.cond-good      { background: #fffbeb; color: #92400e; border-color: #fde68a; }
+.cond-good::before      { background: #f59e0b; }
+.cond-used      { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+.cond-used::before      { background: #f97316; }
+.cond-worn      { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+.cond-worn::before      { background: #ef4444; }
 
 .card-desc {
   font-size: 13px;
@@ -676,7 +690,7 @@ footer .footer-actions { display: flex; gap: 10px; justify-content: center; marg
   .hero { padding: 20px; }
   .grid { display: block; }
   .card { page-break-inside: avoid; margin-bottom: 20px; box-shadow: none; border: 1px solid #ccc; }
-  .carousel { height: 200px; }
+  .carousel { height: 220px; }
   .carousel-slides { transform: translateX(0) !important; }
   .carousel-slide:not(:first-child) { display: none; }
 }
