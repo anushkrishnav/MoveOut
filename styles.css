@@ -435,6 +435,31 @@ main {
   letter-spacing: .02em;
 }
 
+/* ─── Condition Badge ──────────────────────────────────── */
+.condition-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+}
+.condition-badge::before {
+  content: '●';
+  font-size: 7px;
+  line-height: 1;
+}
+.cond-new       { background: #e8f9ef; color: #1a7f4b; border-color: #9edfbb; }
+.cond-excellent { background: #e6f4ff; color: #1565c0; border-color: #90caf9; }
+.cond-like-new  { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+.cond-good      { background: #fff8e1; color: #b45309; border-color: #fcd34d; }
+.cond-used      { background: #fff3e0; color: #c2410c; border-color: #fdba74; }
+.cond-worn      { background: #fff1f2; color: #b91c1c; border-color: #fca5a5; }
+
 .card-desc {
   font-size: 13px;
   color: var(--gray);

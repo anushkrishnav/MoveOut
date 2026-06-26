@@ -6,6 +6,21 @@ const CATEGORIES  = ['All', 'Electronics', 'Storage', 'Furniture', 'Office', 'Li
 /* ─── Placeholder SVG (must be declared before handleImgError) */
 const imagePlaceholderSVG = `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
 
+/* ─── Condition badge ─────────────────────────────────────── */
+const CONDITION_MAP = {
+  'excellent':     { cls: 'cond-excellent',  label: 'Excellent' },
+  'brand new':     { cls: 'cond-new',        label: 'Brand New' },
+  'used like new': { cls: 'cond-like-new',   label: 'Used Like New' },
+  'good':          { cls: 'cond-good',       label: 'Good' },
+  'used':          { cls: 'cond-used',       label: 'Used' },
+  'wear and tear': { cls: 'cond-worn',       label: 'Wear & Tear' },
+};
+function conditionBadge(cond) {
+  const key  = (cond || '').toLowerCase().trim();
+  const meta = CONDITION_MAP[key] || { cls: 'cond-good', label: escHtml(cond || 'Unknown') };
+  return `<span class="condition-badge ${meta.cls}">${meta.label}</span>`;
+}
+
 /* ─── Image error handler — called from onerror attribute ─── */
 function handleImgError(img) {
   const slide = img.closest('.carousel-slide');
@@ -136,7 +151,7 @@ function createCard(p) {
       <div class="card-meta">
         <span class="meta-pill">${escHtml(p.category)}</span>
         <span class="meta-pill">${escHtml(p.color)}</span>
-        <span class="meta-pill">${escHtml(p.condition)}</span>
+        ${conditionBadge(p.condition)}
       </div>
       <div class="card-desc">${escHtml(p.description)}</div>
       ${notesHTML}
