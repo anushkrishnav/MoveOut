@@ -89,5 +89,18 @@
     "askingPrice": 6,
     "status": "available",
     "imageCount": 0
+  },
+  {
+    "id": "008",
+    "title": "DAYBETTER A19 LED Light Bulbs (4-pack)",
+    "description": "60W equivalent daylight bulbs. 9W, 800 lumens, 5000K, E26 base. Non-dimmable.",
+    "category": "Lighting",
+    "color": "Daylight White",
+    "condition": "Brand new",
+    "notes": "4 bulbs. Unopened and unused.",
+    "originalPrice": null,
+    "askingPrice": 5,
+    "status": "available",
+    "imageCount": 2
   }
 ]
