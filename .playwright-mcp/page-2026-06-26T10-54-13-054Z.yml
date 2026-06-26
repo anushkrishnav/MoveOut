@@ -1,0 +1,305 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "Moving Out Sale" [level=1] [ref=e7]
+    - paragraph [ref=e8]: Relocating — everything must go
+    - paragraph [ref=e9]: Pickup only · Park Point
+    - generic [ref=e11]:
+      - link "WhatsApp Us" [ref=e12] [cursor=pointer]:
+        - /url: https://wa.me/15859811189?text=Hi%2C%20I%20saw%20your%20Moving%20Out%20Sale%20listing.%20I%27m%20interested!
+        - img [ref=e13]
+        - text: WhatsApp Us
+      - link "Call Now" [ref=e15] [cursor=pointer]:
+        - /url: tel:5859811189
+        - img [ref=e16]
+        - text: Call Now
+  - generic [ref=e18]:
+    - strong [ref=e19]: Pickup only.
+    - text: Please call or WhatsApp
+    - strong [ref=e20]: 585-981-1189
+    - text: to confirm availability before coming. First come, first served.
+  - generic [ref=e22]:
+    - generic [ref=e23]:
+      - img
+      - searchbox "Search items…" [ref=e24]
+    - generic [ref=e25]:
+      - button "All" [ref=e26] [cursor=pointer]
+      - button "Storage" [ref=e27] [cursor=pointer]
+      - button "Furniture" [ref=e28] [cursor=pointer]
+      - button "Office" [ref=e29] [cursor=pointer]
+      - button "Lighting" [ref=e30] [cursor=pointer]
+      - button "Utility" [ref=e31] [cursor=pointer]
+  - main [ref=e32]:
+    - button "Export Catalog PDF" [ref=e34] [cursor=pointer]:
+      - img [ref=e35]
+      - text: Export Catalog PDF
+    - paragraph [ref=e38]: 7 items found
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - generic [ref=e41]: "# 001"
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - img "Terilite 3 Drawer Storage Tower image 1" [ref=e45]
+              - generic [ref=e48]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e49]:
+            - img "Terilite 3 Drawer Storage Tower image 2" [ref=e50]
+            - generic [ref=e53]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - generic [ref=e54]:
+          - img "Terilite 3 Drawer Storage Tower image 3" [ref=e55]
+          - generic [ref=e58]: No image
+        - text: "'\" loading=\"lazy\" />"
+        - generic [ref=e59]:
+          - img "Terilite 3 Drawer Storage Tower image 4" [ref=e60]
+          - generic [ref=e63]: No image
+        - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e64] [cursor=pointer]:
+          - img [ref=e65]
+        - button "Next" [ref=e67] [cursor=pointer]:
+          - img [ref=e68]
+        - generic [ref=e75]:
+          - generic [ref=e76]: Terilite 3 Drawer Storage Tower
+          - generic [ref=e77]:
+            - generic [ref=e78]: Storage
+            - generic [ref=e79]: Brown
+            - generic [ref=e80]: Used like new
+          - generic [ref=e81]: Plastic weave medium home organizer.
+          - generic [ref=e82]: No scratches or stickers.
+          - generic [ref=e84]: $15
+          - generic [ref=e85]:
+            - link "WhatsApp" [ref=e86] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20001%20-%20Terilite%203%20Drawer%20Storage%20Tower.%20Is%20it%20still%20available%3F
+              - img [ref=e87]
+              - text: WhatsApp
+            - link "Call" [ref=e89] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e90]
+              - text: Call
+      - generic [ref=e92]:
+        - generic [ref=e93]: "# 002"
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - img "Modern Gold Bar Cart with Wooden Shelves image 1" [ref=e97]
+              - generic [ref=e100]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e101]:
+            - img "Modern Gold Bar Cart with Wooden Shelves image 2" [ref=e102]
+            - generic [ref=e105]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e106] [cursor=pointer]:
+          - img [ref=e107]
+        - button "Next" [ref=e109] [cursor=pointer]:
+          - img [ref=e110]
+        - generic [ref=e115]:
+          - generic [ref=e116]: Modern Gold Bar Cart with Wooden Shelves
+          - generic [ref=e117]:
+            - generic [ref=e118]: Furniture
+            - generic [ref=e119]: Gold / Wood
+            - generic [ref=e120]: Good
+          - generic [ref=e121]: 3-tier rolling serving trolley.
+          - generic [ref=e122]: Minor scratches.
+          - generic [ref=e124]: $50
+          - generic [ref=e125]:
+            - link "WhatsApp" [ref=e126] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20002%20-%20Modern%20Gold%20Bar%20Cart%20with%20Wooden%20Shelves.%20Is%20it%20still%20available%3F
+              - img [ref=e127]
+              - text: WhatsApp
+            - link "Call" [ref=e129] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e130]
+              - text: Call
+      - generic [ref=e132]:
+        - generic [ref=e133]: "# 003"
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - img "YTKUS Big and Tall Office Chair image 1" [ref=e137]
+              - generic [ref=e140]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e141]:
+            - img "YTKUS Big and Tall Office Chair image 2" [ref=e142]
+            - generic [ref=e145]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e146] [cursor=pointer]:
+          - img [ref=e147]
+        - button "Next" [ref=e149] [cursor=pointer]:
+          - img [ref=e150]
+        - generic [ref=e155]:
+          - generic [ref=e156]: YTKUS Big and Tall Office Chair
+          - generic [ref=e157]:
+            - generic [ref=e158]: Office
+            - generic [ref=e159]: Brown
+            - generic [ref=e160]: Used like new
+          - generic [ref=e161]: 400 lbs executive ergonomic office chair for indoor commercial or home use.
+          - generic [ref=e162]: No scratches. Right handle is slightly wobbly.
+          - generic [ref=e163]:
+            - generic [ref=e164]: Was $120
+            - generic [ref=e165]: $65
+          - generic [ref=e166]:
+            - link "WhatsApp" [ref=e167] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20003%20-%20YTKUS%20Big%20and%20Tall%20Office%20Chair.%20Is%20it%20still%20available%3F
+              - img [ref=e168]
+              - text: WhatsApp
+            - link "Call" [ref=e170] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e171]
+              - text: Call
+      - generic [ref=e173]:
+        - generic [ref=e174]: "# 004"
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - img "OUTMASTER High Back Office Chair image 1" [ref=e178]
+              - generic [ref=e181]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e182]:
+            - img "OUTMASTER High Back Office Chair image 2" [ref=e183]
+            - generic [ref=e186]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - generic [ref=e187]:
+          - img "OUTMASTER High Back Office Chair image 3" [ref=e188]
+          - generic [ref=e191]: No image
+        - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e192] [cursor=pointer]:
+          - img [ref=e193]
+        - button "Next" [ref=e195] [cursor=pointer]:
+          - img [ref=e196]
+        - generic [ref=e202]:
+          - generic [ref=e203]: OUTMASTER High Back Office Chair
+          - generic [ref=e204]:
+            - generic [ref=e205]: Office
+            - generic [ref=e206]: Black
+            - generic [ref=e207]: Good
+          - generic [ref=e208]: Ergonomic PU leather office chair with back and lumbar support.
+          - generic [ref=e209]:
+            - generic [ref=e210]: Was $99
+            - generic [ref=e211]: $50
+          - generic [ref=e212]:
+            - link "WhatsApp" [ref=e213] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20004%20-%20OUTMASTER%20High%20Back%20Office%20Chair.%20Is%20it%20still%20available%3F
+              - img [ref=e214]
+              - text: WhatsApp
+            - link "Call" [ref=e216] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e217]
+              - text: Call
+      - generic [ref=e219]:
+        - generic [ref=e220]: "# 005"
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - img "4-Tier Rolling Storage Cart image 1" [ref=e224]
+              - generic [ref=e227]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e228]:
+            - img "4-Tier Rolling Storage Cart image 2" [ref=e229]
+            - generic [ref=e232]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e233] [cursor=pointer]:
+          - img [ref=e234]
+        - button "Next" [ref=e236] [cursor=pointer]:
+          - img [ref=e237]
+        - generic [ref=e242]:
+          - generic [ref=e243]: 4-Tier Rolling Storage Cart
+          - generic [ref=e244]:
+            - generic [ref=e245]: Utility
+            - generic [ref=e246]: White
+            - generic [ref=e247]: Used like new
+          - generic [ref=e248]: Metal utility cart with removable baskets and wheels. Suitable for kitchen, bathroom, office, or laundry room.
+          - generic [ref=e249]: No wear and tear.
+          - generic [ref=e251]: $15
+          - generic [ref=e252]:
+            - link "WhatsApp" [ref=e253] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20005%20-%204-Tier%20Rolling%20Storage%20Cart.%20Is%20it%20still%20available%3F
+              - img [ref=e254]
+              - text: WhatsApp
+            - link "Call" [ref=e256] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e257]
+              - text: Call
+      - generic [ref=e259]:
+        - generic [ref=e260]: "# 006"
+        - generic [ref=e261]:
+          - generic [ref=e262]:
+            - generic [ref=e263]:
+              - img "Mainstays 71-inch Floor Lamp (Gray) image 1" [ref=e264]
+              - generic [ref=e267]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e268]:
+            - img "Mainstays 71-inch Floor Lamp (Gray) image 2" [ref=e269]
+            - generic [ref=e272]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e273] [cursor=pointer]:
+          - img [ref=e274]
+        - button "Next" [ref=e276] [cursor=pointer]:
+          - img [ref=e277]
+        - generic [ref=e282]:
+          - generic [ref=e283]: Mainstays 71-inch Floor Lamp (Gray)
+          - generic [ref=e284]:
+            - generic [ref=e285]: Lighting
+            - generic [ref=e286]: Gray
+            - generic [ref=e287]: Good
+          - generic [ref=e288]: Floor lamp with 3-way switch and modern design.
+          - generic [ref=e289]: White bulb included.
+          - generic [ref=e291]: $6
+          - generic [ref=e292]:
+            - link "WhatsApp" [ref=e293] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20006%20-%20Mainstays%2071-inch%20Floor%20Lamp%20(Gray).%20Is%20it%20still%20available%3F
+              - img [ref=e294]
+              - text: WhatsApp
+            - link "Call" [ref=e296] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e297]
+              - text: Call
+      - generic [ref=e299]:
+        - generic [ref=e300]: "# 007"
+        - generic [ref=e301]:
+          - generic [ref=e302]:
+            - generic [ref=e303]:
+              - img "Mainstays 71-inch Floor Lamp (Black) image 1" [ref=e304]
+              - generic [ref=e307]: No image
+            - text: "'\" loading=\"lazy\" />"
+          - generic [ref=e308]:
+            - img "Mainstays 71-inch Floor Lamp (Black) image 2" [ref=e309]
+            - generic [ref=e312]: No image
+          - text: "'\" loading=\"lazy\" />"
+        - button "Previous" [ref=e313] [cursor=pointer]:
+          - img [ref=e314]
+        - button "Next" [ref=e316] [cursor=pointer]:
+          - img [ref=e317]
+        - generic [ref=e322]:
+          - generic [ref=e323]: Mainstays 71-inch Floor Lamp (Black)
+          - generic [ref=e324]:
+            - generic [ref=e325]: Lighting
+            - generic [ref=e326]: Black
+            - generic [ref=e327]: Good
+          - generic [ref=e328]: Floor lamp with 3-way switch and modern design.
+          - generic [ref=e329]: White bulb included.
+          - generic [ref=e331]: $6
+          - generic [ref=e332]:
+            - link "WhatsApp" [ref=e333] [cursor=pointer]:
+              - /url: https://wa.me/15859811189?text=Hi%2C%20I'm%20interested%20in%20item%20007%20-%20Mainstays%2071-inch%20Floor%20Lamp%20(Black).%20Is%20it%20still%20available%3F
+              - img [ref=e334]
+              - text: WhatsApp
+            - link "Call" [ref=e336] [cursor=pointer]:
+              - /url: tel:5859811189
+              - img [ref=e337]
+              - text: Call
+  - contentinfo [ref=e339]:
+    - paragraph [ref=e344]: Selling because we are relocating. Thank you for your support.
+    - paragraph [ref=e345]: All items are pickup only. We do not ship or deliver.
+    - generic [ref=e346]: 585-981-1189
+    - paragraph [ref=e347]:
+      - text: Pickup at
+      - strong [ref=e348]: Park Point
+    - generic [ref=e349]:
+      - link "WhatsApp" [ref=e350] [cursor=pointer]:
+        - /url: https://wa.me/15859811189?text=Hi%2C%20I%20saw%20your%20Moving%20Out%20Sale%20listing!
+        - img [ref=e351]
+        - text: WhatsApp
+      - link "Call" [ref=e353] [cursor=pointer]:
+        - /url: tel:5859811189
+        - img [ref=e354]
+        - text: Call

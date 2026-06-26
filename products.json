@@ -1,0 +1,93 @@
+[
+  {
+    "id": "001",
+    "title": "Terilite 3 Drawer Storage Tower",
+    "description": "Plastic weave medium home organizer.",
+    "category": "Storage",
+    "color": "Brown",
+    "condition": "Used like new",
+    "notes": "No scratches or stickers.",
+    "originalPrice": null,
+    "askingPrice": 15,
+    "status": "available",
+    "imageCount": 4
+  },
+  {
+    "id": "002",
+    "title": "Modern Gold Bar Cart with Wooden Shelves",
+    "description": "3-tier rolling serving trolley.",
+    "category": "Furniture",
+    "color": "Gold / Wood",
+    "condition": "Good",
+    "notes": "Minor scratches.",
+    "originalPrice": null,
+    "askingPrice": 50,
+    "status": "available",
+    "imageCount": 2
+  },
+  {
+    "id": "003",
+    "title": "YTKUS Big and Tall Office Chair",
+    "description": "400 lbs executive ergonomic office chair for indoor commercial or home use.",
+    "category": "Office",
+    "color": "Brown",
+    "condition": "Used like new",
+    "notes": "No scratches. Right handle is slightly wobbly.",
+    "originalPrice": 120,
+    "askingPrice": 65,
+    "status": "available",
+    "imageCount": 4
+  },
+  {
+    "id": "004",
+    "title": "OUTMASTER High Back Office Chair",
+    "description": "Ergonomic PU leather office chair with back and lumbar support.",
+    "category": "Office",
+    "color": "Black",
+    "condition": "Good",
+    "notes": "",
+    "originalPrice": 99,
+    "askingPrice": 50,
+    "status": "available",
+    "imageCount": 3
+  },
+  {
+    "id": "005",
+    "title": "4-Tier Rolling Storage Cart",
+    "description": "Metal utility cart with removable baskets and wheels. Suitable for kitchen, bathroom, office, or laundry room.",
+    "category": "Utility",
+    "color": "White",
+    "condition": "Used like new",
+    "notes": "No wear and tear.",
+    "originalPrice": null,
+    "askingPrice": 15,
+    "status": "available",
+    "imageCount": 2
+  },
+  {
+    "id": "006",
+    "title": "Mainstays 71-inch Floor Lamp (Gray)",
+    "description": "Floor lamp with 3-way switch and modern design.",
+    "category": "Lighting",
+    "color": "Gray",
+    "condition": "Good",
+    "notes": "White bulb included.",
+    "originalPrice": null,
+    "askingPrice": 6,
+    "status": "available",
+    "imageCount": 1
+  },
+  {
+    "id": "007",
+    "title": "Mainstays 71-inch Floor Lamp (Black)",
+    "description": "Floor lamp with 3-way switch and modern design.",
+    "category": "Lighting",
+    "color": "Black",
+    "condition": "Good",
+    "notes": "White bulb included.",
+    "originalPrice": null,
+    "askingPrice": 6,
+    "status": "available",
+    "imageCount": 0
+  }
+]
